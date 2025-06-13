@@ -1,0 +1,1 @@
+//Resumo: Verifica se um número é par ou ímpar, positivo ou negativo.
