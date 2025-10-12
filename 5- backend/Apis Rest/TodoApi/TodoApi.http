@@ -1,0 +1,16 @@
+@TodoApi_HostAddress = https://localhost:7019
+
+GET {{TodoApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{TodoApi_HostAddress}}/api/todoitems
+Content-Type: application/json
+
+{
+  //TodoItem
+}
+
+###
+ 

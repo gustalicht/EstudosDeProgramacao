@@ -1,0 +1,42 @@
+# Ignore build outputs
+bin/
+obj/
+
+# Visual Studio temporary files, user-specific files and IDE directories
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# ASP.NET Core sensitive configuration
+# Ignore environment-specific appsettings (do not commit secrets)
+appsettings*.json
+Properties/launchSettings.json
+
+# Secret storage (if using Secret Manager locally)
+secrets.json
+
+# NuGet
+*.nupkg
+# The packages folder can be ignored because of PackageReference
+packages/
+
+# OS files
+Thumbs.db
+ehthumbs.db
+.DS_Store
+
+# Logs
+*.log
+
+# Others
+node_modules/
+dist/
+
+# Ensure git doesn't accidentally add publish output
+publish/
+
