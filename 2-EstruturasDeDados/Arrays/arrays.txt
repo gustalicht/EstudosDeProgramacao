@@ -1,0 +1,93 @@
+ O que é um Array?
+Um array é uma estrutura de dados que armazena uma coleção de elementos do mesmo tipo, organizados em índices numerados. Eles são úteis quando você precisa guardar uma sequência de valores e acessar cada um deles pelo índice.
+
+✅ Quando usar arrays?
+Quando você precisa armazenar múltiplos valores relacionados (ex: notas de alunos, lista de produtos).
+
+Quando sabe a quantidade exata ou estimada de itens.
+
+Quando precisa acessar valores rapidamente por posição.
+
+
+// Declarando um array com tamanho fixo
+int[] numeros = new int[5];
+
+// Inicializando diretamente
+int[] pares = new int[] { 2, 4, 6, 8 };
+
+// Forma reduzida
+string[] nomes = { "Ana", "João", "Carlos" };
+
+
+for (int i = 0; i < nomes.Length; i++)
+{
+    Console.WriteLine(nomes[i]);
+}
+
+foreach (var nome in nomes)
+{
+    Console.WriteLine(nome);
+}
+📦 Arrays em JavaScript
+📌 Criando arrays:
+js
+Copiar
+Editar
+// Literal
+let frutas = ["maçã", "banana", "laranja"];
+
+// Construtor
+let numeros = new Array(5); // [empty × 5]
+🔁 Iterando:
+js
+Copiar
+Editar
+for(let i = 0; i < frutas.length; i++) {
+  console.log(frutas[i]);
+}
+
+frutas.forEach(fruta => console.log(fruta));
+💡 Principais métodos em JS (para arrays):
+push() – adiciona ao final
+
+pop() – remove do final
+
+unshift() – adiciona ao início
+
+shift() – remove do início
+
+includes() – verifica se contém
+
+indexOf() – posição de um item
+
+slice() – copia parte do array
+
+splice() – insere/remove no meio
+
+map(), filter(), reduce() – transformações poderosas
+
+⚡ Arrays multidimensionais (matrizes)
+Em C#:
+csharp
+Copiar
+Editar
+int[,] matriz = new int[2,3] { {1,2,3}, {4,5,6} };
+Console.WriteLine(matriz[1,2]); // 6
+Em JavaScript:
+js
+Copiar
+Editar
+let matriz = [
+  [1, 2, 3],
+  [4, 5, 6]
+];
+console.log(matriz[1][2]); // 6
+🚀 Dicas de uso
+Prefira List<T> no C# se precisar de um array mais flexível.
+
+Em JS, array.length pode ser alterado diretamente.
+
+Arrays são zero-indexados (começam do índice 0).
+
+No JS, evite misturar tipos dentro do mesmo array.
+
