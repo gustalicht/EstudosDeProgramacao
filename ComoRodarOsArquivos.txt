@@ -1,0 +1,1 @@
+Basicamente você só precisa baixar o dotnet script e depois usar o comando "dotnet script [NOME DO ARQUIVO]  para rodar.

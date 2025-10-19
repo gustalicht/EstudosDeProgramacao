@@ -1,1 +1,2 @@
 //Resumo: Simula um bate-papo básico onde o usuário digita mensagens e o "sistema" responde com mensagens simples.
+
