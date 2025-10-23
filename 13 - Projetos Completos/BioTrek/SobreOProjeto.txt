@@ -1,3 +1,32 @@
 BioTrek o planejador de expedição
 Conceito(viagens,biologia,geografia) : um planejador de viagens focado em natureza. O usuário cria uma expedição("viagem à costa rica") e adiciona "pontos de interesse"(POIs) (ex:"parque nacional monteverde"). O DESAFIO (tecnologia) :blazor UI para o usuário criar a viagem e adicionar os POIs. API 1(Trip.API):gerencia o crud das viagens e POIs. Rabbitmq : quando um novo POI é adicionado, publica um evento POIAdcionado.Worker, ouve o evento sua função é enriquecer o dado. Ele usa o nome do POI("monteverde") para consultar APIs externas ex : api de clima, Api de biodiversidade. Api(data.API) armazena e serve esse dado enriquecido  para o blazor.
 Usando  queue e stacks(filas e pilhas). O proprio worke pode usar uma fila interna para gerenciar as chamadas de API externas, ou uma pilha para processar dependências.
+
+
+
+fale sozinho
+
+Decorar 4 frases úteis no dia. Frases que você usa no seu cotidiano
+
+
+
+Uma pergunta e a resposta para esta pergunta. 
+
+Ao se responder nem que seja mentalmente todo dia repetindo essas perguntas você aos poucos vai criando dialogos na sua mente. 
+
+
+
+Gramática Só por último 
+
+
+______________________________________________________________________________
+dia 23/10/2025 
+
+Começar a implementação. 
+
+Usar inMemory para o banco ou arquivo txt,json separado.
+Ou apontar o banco para a minha máquina pessoal? 
+
+Tarefas : Escolher o formato da persistência de dados.
+Contruir a estrutura.
+
