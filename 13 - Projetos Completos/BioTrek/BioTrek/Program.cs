@@ -1,7 +1,15 @@
+using BioTrek.Application.Services;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<EnrichedDataService>();
+builder.Services.AddAutoMapper(typeof(EnrichedDataProfile));
+builder.Services.AddScoped<ITripService, TripService>();
+
+builder.Services.AddControllers();
 
 var app = builder.Build();
 

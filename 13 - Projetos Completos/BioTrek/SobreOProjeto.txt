@@ -30,3 +30,87 @@ Ou apontar o banco para a minha máquina pessoal?
 Tarefas : Escolher o formato da persistência de dados.
 Contruir a estrutura.
 
+
+
+
+
+
+
+
+
+Visão geral (alto nível)
+Seu projeto usa uma separação por responsabilidades dentro de um único projeto SDK-style (.NET 9) — pastas representam camadas lógicas:
+
+src/Domain — entidades de domínio (EnrichedData, Poi, Trip). Contém as regras e modelos centrais do negócio.
+src/Application — casos de uso, mapeadores e serviços de aplicação (a camada que orquestra operações entre domínio e infraestrutura). Você tem Mappers e outras subpastas como Services, Ports.
+src/Infrastructure — implementações concretas (persistência, integrações com Rabbit/Redis, middleware de logging). Subpastas: data, Persistence, Logging, Rabbit, etc.
+src/Presentation — camada web / API; contém DTOs (Dto) e recursos estáticos (wwwroot). É a fronteira do sistema com o mundo exterior (controllers/endpoints).
+src/Models — (atualmente vazio) tipicamente usado para classes de contrato ou configurações compartilhadas (ex.: BrokerSettings, LogOptions, BaseDto) — no print anterior, Models era um projeto separado com DTOs e configurações.
+src/Orchestration — workers/jobs ou integração com message broker (Rabbit). Contém lógica que coordena várias partes (ex.: consumo de mensagens e chamada de serviços de Application).
+src/Core — pasta recém-criada para utilitários/compartilhados (estava vazia antes).
+Este arranjo é equivalente a uma arquitetura em camadas / hexagonal parcialmente aplicada (Domain + Application + Infrastructure + Presentation). É uma boa prática.
+
+Fluxo de execução e comunicação entre camadas (sequência típica)
+Requisição entra na aplicação (Presentation)
+
+Ex.: um endpoint HTTP recebe uma requisição ou um consumidor de fila (Orchestration/Rabbit) recebe uma mensagem.
+Presentation valida entrada (ModelState / FluentValidation).
+Presentation converte para DTO/calls Application
+
+O controller cria/usa um DTO (ex.: EnrichedDataDto) e passa para um service do Application (caso de uso).
+Mapeadores (Application/Mappers/EnrichedDataMapper) transformam DTO -> Domain (ou vice-versa).
+Application executa a lógica de orquestração
+
+Serviços de Application contêm casos de uso (por exemplo: criar novo EnrichedData, aplicar regras, coordenar repositórios).
+Eles chamam interfaces definidas possivelmente no Domain (ex.: IEnrichedDataRepository) ou Application ports.
+Application delega persistência/integrações para Infrastructure
+
+Repositórios/implementações concretas vivem em Infrastructure/Persistence ou Infrastructure/data.
+Ex.: IEnrichedDataRepository (interface) é implementado como EnrichedDataRepository que usa EF Core ou outro driver para salvar dados.
+Infrastructure faz I/O e retorna resultado
+
+Infra salva no banco, envia mensagens para Rabbit, lê de Redis, etc.
+Logging e Middlewares em Infrastructure/Logging lidam com cross-cutting concerns.
+Resultado volta para Application → Presentation
+
+Application recebe o resultado (entidade de domínio) e o mapeia para DTO pela camada de mapeamento.
+Presentation retorna a resposta HTTP com DTO serializado.
+Fluxo alternativo: mensagens assíncronas
+
+Orchestration (Rabbit consumer) recebe evento, mapeia para DTO/domain e chama um Application service para processar — sem passar pela camada Presentation.
+Papéis e responsabilidades — quem se comunica com quem
+Presentation (API/controllers)
+
+Depende de: Application (para casos de uso), Presentation.Dto (para shapes).
+Não deve depender de: Infrastructure direto (evitar acoplamento).
+Application (services, use-cases, mappers)
+
+Depende de: Domain (entidades, interfaces), Presentation.Dto (para input/output).
+Define portas (interfaces) que Infrastructure implementa.
+Central de orquestração — lógica de casos de uso simples.
+Domain (entidades, regras)
+
+Independe de Application/Infrastructure (core puro).
+Pode definir interfaces necessárias (ex.: repositórios) — preferencialmente interfaces, não implementações.
+Infrastructure (repos, integrations)
+
+Depende de: Domain (interfaces, entidades).
+Implementa as interfaces/ports, faz I/O, middlewares.
+Pode expor configurações que vivem em Models (broker settings, log options).
+Orchestration (workers/consumers)
+
+Pode depender de Application e Infrastructure.
+Recebe mensagens e usa Application services para processar.
+Models (shared DTOs/configs)
+
+Usada por Presentation, Application, Infrastructure (contratos comuns).
+Exemplo concreto com EnrichedData
+Requisição POST /enricheddata => Controller receives EnrichedDataDto.
+Controller chama IEnrichedDataService.Create(dto) (Application service).
+Service usa dto.ToDomain() (mapper) → Domain entity EnrichedData.
+Service aplica regras (ex.: valida IsValidType()).
+Service calls IEnrichedDataRepository.Add(enrichedData) (interface from Domain/Application).
+Infrastructure's EnrichedDataRepository persists via EF Core (Persistence).
+Repository returns saved entity to Service.
+Service maps to DTO ToDto() and returns to Controller.
+Controller returns 201 Created with payload.

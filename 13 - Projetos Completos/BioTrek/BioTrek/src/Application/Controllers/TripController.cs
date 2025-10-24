@@ -1,8 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using BioTrek.Application.Services;
+using BioTrek.Presentation.Dto; 
 
-public class TripController
+namespace BioTrek.Application.Controllers
 {
-    private readonly ITripService _tripService;
+    public class TripController
+    {
+        private readonly ITripService _tripService;
 
     public TripController(ITripService tripService)
     {
@@ -31,11 +35,11 @@ public class TripController
     {
 
     }
-    
 
 
-//outras formas de fazer controllers e metodos? 
-sdsdsd
+
+    //outras formas de fazer controllers e metodos? 
+    sdsdsd
 
 
 

@@ -1,4 +1,4 @@
-public interface IBioTrekService
+namespace BioTrek.Application.Services
 {
-    // Definição dos métodos do serviço BioTrek
+    
 }
