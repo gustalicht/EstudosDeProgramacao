@@ -1,14 +1,21 @@
+﻿// Exemplos basicos de tipos em JavaScript / Node.
 let idade = 25;
 const nome = "Gustavo";
 var altura = 1.75;
-//Node usa a mesma base que JavaScript, com sintaxe igual.
-// | Tipo        | Exemplo                   |
-// | ----------- | ------------------------- |
-// | `number`    | `let x = 10;`             |
-// | `string`    | `let nome = "João"`       |
-// | `boolean`   | `let ativo = true;`       |
-// | `undefined` | Declara mas não atribui   |
-// | `null`      | Valor "vazio" intencional |
-// | `object`    | `{ nome: "Ana" }`         |
-// | `array`     | `[1, 2, 3]`               |
-// | `function`  | `function soma() {}`      |
+let ativo = true;
+let nada = null;
+let indefinido;
+let pessoa = { nome: "Ana", idade: 30 };
+let lista = [1, 2, 3];
+
+console.log("Nome:", nome);
+console.log("Idade:", idade);
+console.log("Altura:", altura);
+console.log("Ativo:", ativo);
+console.log("Nulo:", nada, "Indefinido:", indefinido);
+console.log("Pessoa:", pessoa);
+console.log("Lista:", lista);
+
+// DESAFIO
+// 1) Criar funcao que soma numeros de um array.
+// 2) Mostrar diferenca entre var, let e const.

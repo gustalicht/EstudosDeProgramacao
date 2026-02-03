@@ -1,64 +1,79 @@
-// a ideia primeiro criar um gerador de mensagens básiquinho e enviar tudo para uma fila.
-using System;
-using System.Security.Cryptography.X509Certificates;
+﻿using System;
+using System.Collections.Generic;
 
+// ======================================================
+// OBJETIVO
+// Simular uma fila de mensagens (thread-safe).
+// ======================================================
 
+// PASSO A PASSO
+// 1) Gerador cria mensagens.
+// 2) Fila armazena.
+// 3) Consumidor remove e processa.
 
 class GeradorDeMensagens
 {
-    private int contador = 0;
+    private int _contador = 0;
 
     public string GerarMensagem()
     {
-        contador++;
-        return $"Mensagem {contador} gerada em {DateTime.Now}";
+        _contador++;
+        return $"Mensagem {_contador} gerada em {DateTime.Now}";
     }
 }
 
 class FilaDeMensagens
 {
-    private Queue<string> fila = new Queue<string>();
-    private object lockObj = new object();
+    private readonly Queue<string> _fila = new Queue<string>();
+    private readonly object _lockObj = new object();
 
     public void Enfileirar(string mensagem)
     {
-        lock (lockObj)
+        lock (_lockObj)
         {
-            fila.Enqueue(mensagem);
+            _fila.Enqueue(mensagem);
             Console.WriteLine($"Enfileirado: {mensagem}");
         }
     }
 
-
-    public string Desenfileirar()
+    public string? Desenfileirar()
     {
-        lock (lockObj)
+        lock (_lockObj)
         {
-            if (fila.Count > 0)
+            if (_fila.Count > 0)
             {
-                var mensagem = fila.Dequeue();
+                var mensagem = _fila.Dequeue();
                 Console.WriteLine($"Desenfileirado: {mensagem}");
                 return mensagem;
             }
-            else
-            {
-                return null;
-            }
+            return null;
         }
     }
 
     public int ContarMensagens()
     {
-        lock (lockObj)
+        lock (_lockObj)
         {
-            return fila.Count;
+            return _fila.Count;
         }
     }
-
-
 }
 
-// que problemas a fila resolve?
-// A fila resolve problemas relacionados ao gerenciamento de mensagens assíncronas, permitindo que diferentes partes de um sistema se comuniquem de forma eficiente e organizada. Ela garante que as mensagens sejam processadas na ordem em que foram recebidas, evitando a perda de informações e facilitando a escalabilidade do sistema.// Além disso, a fila ajuda a desacoplar os componentes do sistema, permitindo que eles operem de maneira independente e lidem com picos de carga sem sobrecarregar os recursos disponíveis.
-// Em resumo, a fila é uma ferramenta essencial para garantir a confiabilidade, eficiência e escalabilidade na comunicação entre diferentes partes de um sistema. 
+class Program
+{
+    static void Main()
+    {
+        var gerador = new GeradorDeMensagens();
+        var fila = new FilaDeMensagens();
 
+        fila.Enfileirar(gerador.GerarMensagem());
+        fila.Enfileirar(gerador.GerarMensagem());
+
+        fila.Desenfileirar();
+        fila.Desenfileirar();
+    }
+}
+
+// DESAFIO
+// 1) Criar um loop produtor/consumidor.
+// 2) Limitar o tamanho da fila.

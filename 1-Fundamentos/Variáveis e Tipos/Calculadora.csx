@@ -1,36 +1,64 @@
-Console.WriteLine("Calculadora");
+﻿using System;
+using System.Globalization;
 
-Console.WriteLine("Digite o primeiro Número");
-double primeiro = Convert.ToDouble(Console.ReadLine());
+// ======================================================
+// OBJETIVO
+// Criar uma calculadora simples com entrada de dados.
+// ======================================================
 
-Console.WriteLine("Escolha a operação:(+,-,*,/):");
-string operacao = Console.ReadLine();
-
-Console.WriteLine("Digite o Segundo Número");
-double Segundo = Convert.ToDouble(Console.ReadLine());
-
-double resultado = 0; 
-
-switch (operacao) 
+static bool TentarCalcular(double a, double b, string? operacao, out double resultado)
 {
-    case "+": 
-        resultado = primeiro + Segundo;
-        break;
-    case "-":
-        resultado = primeiro - Segundo;
-        break;
-    case "*":
-        resultado = primeiro * Segundo;
-        break;
-    case "/":
-       resultado = segundo != 0 ? primeiro / segundo : throw new DivideByZeroException("Não pode dividir por zero!");
+    resultado = 0;
+    if (string.IsNullOrWhiteSpace(operacao)) return false;
 
-        break;
-
-    default:// além do default, eu consigo usar mais coisas aqui com switch?
-        Console.WriteLine("Opção inválida!");
-        return; // quando usar o return? 
+    switch (operacao.Trim())
+    {
+        case "+": resultado = a + b; return true;
+        case "-": resultado = a - b; return true;
+        case "*": resultado = a * b; return true;
+        case "/":
+            if (b == 0) return false;
+            resultado = a / b;
+            return true;
+        default:
+            return false;
+    }
 }
 
+static bool TryParseDouble(string? input, out double valor)
+    => double.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out valor)
+       || double.TryParse(input, NumberStyles.Float, CultureInfo.CurrentCulture, out valor);
 
-Console.WriteLine($"Resultado {resultado}");
+static void RodarInterativo()
+{
+    Console.Write("Digite o primeiro numero: ");
+    if (!TryParseDouble(Console.ReadLine(), out var primeiro))
+    {
+        Console.WriteLine("Entrada invalida.");
+        return;
+    }
+
+    Console.Write("Escolha a operacao (+,-,*,/): ");
+    var operacao = Console.ReadLine();
+
+    Console.Write("Digite o segundo numero: ");
+    if (!TryParseDouble(Console.ReadLine(), out var segundo))
+    {
+        Console.WriteLine("Entrada invalida.");
+        return;
+    }
+
+    if (!TentarCalcular(primeiro, segundo, operacao, out var resultado))
+    {
+        Console.WriteLine("Operacao invalida ou divisao por zero.");
+        return;
+    }
+
+    Console.WriteLine($"Resultado: {resultado}");
+}
+
+RodarInterativo();
+
+// DESAFIO
+// 1) Adicionar potencia e raiz.
+// 2) Aceitar expressao inteira em uma linha.

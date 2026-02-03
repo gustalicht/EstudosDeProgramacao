@@ -1,4 +1,8 @@
-//aqui uns desafios de lógica sem ma´temática.
+﻿// ======================================================
+// OBJETIVO
+// Resolver desafios simples de logica sem matematica pesada.
+// ======================================================
+
 using System;
 
 class DesafiosDeLogicaSemMatematica
@@ -8,14 +12,22 @@ class DesafiosDeLogicaSemMatematica
         Console.WriteLine("Desafios de Lógica sem Matemática");
 
         // Desafio 1: Inverter uma string
-        string original = "programação";
+        // PASSO A PASSO
+        // 1) Transformar a string em array de char.
+        // 2) Inverter o array.
+        // 3) Criar nova string.
+        string original = "programacao";
         char[] charArray = original.ToCharArray();
         Array.Reverse(charArray);
         string invertida = new string(charArray);
-        Console.WriteLine($"String original: {original}, String invertida: {invertida}");
+        Console.WriteLine($"Original: {original}, Invertida: {invertida}");
 
-        // Desafio 2: Contar vogais em uma frase
-        string frase = "Desafios de lógica sem matemática";
+        // Desafio 2: Contar vogais
+        // PASSO A PASSO
+        // 1) Percorrer cada letra.
+        // 2) Verificar se esta em 'aeiou'.
+        // 3) Contar.
+        string frase = "Desafios de logica";
         int contadorVogais = 0;
         foreach (char c in frase.ToLower())
         {
@@ -24,23 +36,23 @@ class DesafiosDeLogicaSemMatematica
                 contadorVogais++;
             }
         }
-        Console.WriteLine($"Número de vogais na frase: {contadorVogais}");
+        Console.WriteLine($"Vogais: {contadorVogais}");
 
-        // Desafio 3: Verificar palíndromo
+        // Desafio 3: Verificar palindromo
         string palavra = "radar";
         char[] arr = palavra.ToCharArray();
         Array.Reverse(arr);
         string reversa = new string(arr);
         bool ehPalindromo = palavra.Equals(reversa, StringComparison.OrdinalIgnoreCase);
-        Console.WriteLine($"A palavra '{palavra}' é palíndromo? {ehPalindromo}");
+        Console.WriteLine($"'{palavra}' e palindromo? {ehPalindromo}");
     }
 }
 
 public class DesafiosMaisDificeis
 {
-    // Implementar desafios mais difíceis aqui no futuro
+    // Espaço para desafios mais avancados
     public static void Desafio1()
-    {// a ideia deste desafio é 
-        // Código do desafio 1
+    {
+        // Implementar aqui
     }
 }

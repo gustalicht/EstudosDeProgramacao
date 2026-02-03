@@ -1,6 +1,10 @@
-//a ideia é treinar bem a lógica de programação com exercícios simples.
+﻿// ======================================================
+// OBJETIVO
+// Treinar logica com exercicios simples.
+// ======================================================
 
-using System;Collections.Generic;
+using System;
+using System.Collections.Generic;
 
 class TreinamentoDelogica
 {
@@ -8,35 +12,27 @@ class TreinamentoDelogica
     {
         Console.WriteLine("Treinando Lógica de Programação");
 
-        // Exemplo 1: Verificar se um número é par ou ímpar
+        // Exemplo 1: Par ou impar
         int numero = 7;
         if (numero % 2 == 0)
-        {
-            Console.WriteLine($"{numero} é par.");
-        }
+            Console.WriteLine($"{numero} e par.");
         else
-        {
-            Console.WriteLine($"{numero} é ímpar.");
-        }
+            Console.WriteLine($"{numero} e impar.");
 
-        // Exemplo 2: Calcular a soma dos números de 1 a 10
+        // Exemplo 2: Soma de 1 a 10
         int soma = 0;
         for (int i = 1; i <= 10; i++)
-        {
             soma += i;
-        }
-        Console.WriteLine($"A soma dos números de 1 a 10 é {soma}.");
+        Console.WriteLine($"Soma de 1 a 10 = {soma}.");
 
-        // Exemplo 3: Encontrar o maior número em uma lista
+        // Exemplo 3: Maior numero em uma lista
         List<int> numeros = new List<int> { 3, 5, 2, 8, 1 };
         int maior = numeros[0];
         foreach (var num in numeros)
         {
             if (num > maior)
-            {
                 maior = num;
-            }
         }
-        Console.WriteLine($"O maior número na lista é {maior}.");
+        Console.WriteLine($"Maior numero: {maior}.");
     }
 }

@@ -1,69 +1,61 @@
-int[] numeros = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 
-int maior = numeros[0]; // o que significa? 
-int menor = numeros[0];
+// ======================================================
+// OBJETIVO
+// Encontrar o maior e o menor numero de um array.
+// ======================================================
 
-for (int i = 1; i < numeros.Length; i++)
+// PASSO A PASSO (loop)
+// 1) Assumir que o primeiro elemento e o maior e o menor.
+//    Motivo: precisamos de um valor inicial valido.
+// 2) Percorrer do segundo elemento em diante.
+// 3) Atualizar maior/menor quando encontrar valores melhores.
+
+static (int maior, int menor) MaiorMenorLoop(int[] numeros)
 {
-    if (numeros[i] > maior)
-        maior = numeros[i];
+    if (numeros == null || numeros.Length == 0)
+        throw new ArgumentException("Array vazio");
 
-    if (numeros[i] < menor)
-        menor = numeros[i];
-}
+    int maior = numeros[0];
+    int menor = numeros[0];
 
-Console.WriteLine($"Maior: {maior}, Menor: {menor}");
-
-
-
-//forma mais direta usando LINQ 
-
-//using System.Linq;
-
-int[] numeros = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-int maior = numeros.Max();
-int menor = numeros.Min();
-
-Console.WriteLine($"Maior: {maior}, Menor: {menor}");
-
-
-
-// DESAFIO, TENTANDO FAZER SEM FOR, FOREACH. APENAS LÓGICA
-//using System;
-
-class Program
-{
-    static void Main()
+    for (int i = 1; i < numeros.Length; i++)
     {
-        int[] numeros = { 4, 12, 1, 8, 7, 15, 2 };
+        if (numeros[i] > maior)
+            maior = numeros[i];
 
-        // Chamada da função recursiva começando do índice 0
-        var resultado = EncontrarMaiorMenor(numeros, 0, numeros[0], numeros[0]);
-
-        Console.WriteLine($"Maior: {resultado.maior}, Menor: {resultado.menor}");
+        if (numeros[i] < menor)
+            menor = numeros[i];
     }
 
-    // Função recursiva
-    static (int maior, int menor) EncontrarMaiorMenor(int[] arr, int index, int maiorAtual, int menorAtual)
-    {
-        // Caso base: fim do array
-        if (index == arr.Length)
-        {
-            return (maiorAtual, menorAtual);
-        }
-
-        // Atualiza maior e menor se necessário
-        if (arr[index] > maiorAtual)
-        {
-            maiorAtual = arr[index];
-        }
-        if (arr[index] < menorAtual)
-        {
-            menorAtual = arr[index];
-        }
-
-        // Chamada recursiva para o próximo índice
-        return EncontrarMaiorMenor(arr, index + 1, maiorAtual, menorAtual);
-    }
+    return (maior, menor);
 }
+
+// PASSO A PASSO (LINQ)
+// 1) Usar metodos prontos Max e Min.
+// 2) Mais curto, mas esconde o loop interno.
+
+static (int maior, int menor) MaiorMenorLinq(int[] numeros)
+{
+    if (numeros == null || numeros.Length == 0)
+        throw new ArgumentException("Array vazio");
+
+    return (numeros.Max(), numeros.Min());
+}
+
+// ===================
+// EXEMPLO
+// ===================
+int[] valores = { 4, 12, 1, 8, 7, 15, 2 };
+
+var resultado1 = MaiorMenorLoop(valores);
+Console.WriteLine($"Loop -> Maior: {resultado1.maior}, Menor: {resultado1.menor}");
+
+var resultado2 = MaiorMenorLinq(valores);
+Console.WriteLine($"LINQ -> Maior: {resultado2.maior}, Menor: {resultado2.menor}");
+
+// DESAFIO
+// 1) Implementar a versao recursiva.
+// 2) Encontrar maior/menor sem usar Max/Min.

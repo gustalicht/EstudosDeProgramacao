@@ -1,1 +1,53 @@
-Comandos
+﻿COMANDOS BASICOS GIT (GUIA RAPIDO)
+
+1) Configuracao inicial
+- git config --global user.name "Seu Nome"
+- git config --global user.email "seu@email.com"
+
+2) Criar repositorio
+- git init
+
+3) Ver status e historico
+- git status
+- git log --oneline --graph --decorate
+
+4) Adicionar arquivos
+- git add .
+- git add caminho/do/arquivo
+
+5) Commit
+- git commit -m "mensagem clara"
+
+6) Branches
+- git branch
+- git branch nova-branch
+- git checkout nova-branch
+- git switch nova-branch
+- git checkout -b nova-branch
+
+7) Unir branches
+- git merge nome-da-branch
+
+8) Stash (guardar trabalho sem commit)
+- git stash
+- git stash list
+- git stash pop
+
+9) Remoto
+- git remote add origin URL_DO_REPO
+- git push -u origin main
+- git pull
+
+10) Desfazer (com cuidado)
+- git restore arquivo.txt
+- git restore --staged arquivo.txt
+- git revert HASH_DO_COMMIT
+
+Dicas:
+- Commits pequenos e frequentes.
+- Mensagens no formato: "tipo: resumo" (ex: feat: add login).
+- Use branches para experimentar sem quebrar a main.
+
+Desafio:
+1) crie um repo local e faça 3 commits pequenos.
+2) crie uma branch e faça merge de volta.

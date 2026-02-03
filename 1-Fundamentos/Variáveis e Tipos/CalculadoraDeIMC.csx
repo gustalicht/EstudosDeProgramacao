@@ -1,59 +1,47 @@
-//  CalculadoraDeIMC.csx
-// Resumo: Calcula o IMC da pessoa com base no peso e altura.
-// Fórmula:
+﻿using System;
 
-// csharp
-// Copiar
-// Editar
-// IMC = peso / (altura * altura)
-// Classificação:
+// ======================================================
+// OBJETIVO
+// Calcular IMC e classificar o resultado.
+// ======================================================
 
-// < 18.5: Abaixo do peso
-
-// 18.5 – 24.9: Normal
-
-// 25 – 29.9: Sobrepeso
-
-// 30+: Obesidade
-
-
-
-Console.WriteLine("Calculadora de IMC");
-
-Console.WriteLine("Digite a sua altura");
-double altura = double.Parse(Console.ReadLine());
-
-Console.WriteLine("Digite o seu peso");
-double peso = double.Parse(Console.ReadLine());
-
-double IMC = peso / (altura * altura);
-
-string rank = "";
-
-if (IMC < 18.5)
+static double CalcularImc(double peso, double altura)
 {
-    rank = "magrelo";
+    return peso / (altura * altura);
 }
-else if (IMC >= 18.5 && IMC < 25)
+
+static string ClassificarImc(double imc)
 {
-    rank = "peso normal";
+    if (imc < 18.5) return "abaixo do peso";
+    if (imc < 25) return "normal";
+    if (imc < 30) return "sobrepeso";
+    return "obesidade";
 }
-else if (IMC >= 25 && IMC < 30)
+
+static void RodarInterativo()
 {
-    rank = "gordo";
+    Console.Write("Altura (ex: 1.70): ");
+    if (!double.TryParse(Console.ReadLine(), out var altura) || altura <= 0)
+    {
+        Console.WriteLine("Altura invalida.");
+        return;
+    }
+
+    Console.Write("Peso (ex: 65): ");
+    if (!double.TryParse(Console.ReadLine(), out var peso) || peso <= 0)
+    {
+        Console.WriteLine("Peso invalido.");
+        return;
+    }
+
+    var imc = CalcularImc(peso, altura);
+    var classe = ClassificarImc(imc);
+
+    Console.WriteLine($"IMC: {imc:F2} - {classe}");
 }
-else if (IMC > 30)
-{
-    rank = "Obesao";
-}
-// < 18.5: Abaixo do peso
 
-// 18.5 – 24.9: Normal
+RodarInterativo();
 
-// 25 – 29.9: Sobrepeso
-
-// 30+: Obesidade
-
-
-
-Console.WriteLine($"O seu IMC é {IMC:F2} e sua classificação é {rank}");
+// DESAFIO
+// 1) Validar limites humanos.
+// 2) Usar tabela OMS detalhada.
