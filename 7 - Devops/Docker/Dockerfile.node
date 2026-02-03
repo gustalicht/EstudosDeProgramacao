@@ -1,0 +1,8 @@
+﻿# Dockerfile para Node API simples
+FROM node:20-alpine
+
+WORKDIR /app
+COPY "6- Frontend/NodeJs/APINode.js" ./server.js
+
+EXPOSE 3000
+CMD ["node", "server.js"]

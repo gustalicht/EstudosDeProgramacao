@@ -1,0 +1,20 @@
+﻿# Azure Pipeline para Node (APINode.js)
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '20.x'
+
+  - script: |
+      node -v
+      npm -v
+    displayName: 'Check Node'
+
+  - script: |
+      node "6- Frontend/NodeJs/APINode.js"
+    displayName: 'Run sample'

@@ -1,0 +1,9 @@
+﻿# Compose para rodar TodoApi
+version: "3.9"
+services:
+  todoapi:
+    build:
+      context: ../../..
+      dockerfile: "7 - Devops/Docker/Dockerfile.dotnet"
+    ports:
+      - "8080:80"

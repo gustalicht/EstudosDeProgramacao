@@ -1,0 +1,7 @@
+﻿# Dockerfile para Python script (ex: worker)
+FROM python:3.12-slim
+
+WORKDIR /app
+COPY "14 - Python/Projetos/cli_todo.py" ./app.py
+
+CMD ["python", "app.py"]

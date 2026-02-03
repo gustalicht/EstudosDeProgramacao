@@ -1,0 +1,25 @@
+﻿# Dockerfile para API .NET (TodoApi)
+# PASSO A PASSO
+# 1) Usar imagem SDK para build.
+# 2) Restaurar dependencias.
+# 3) Build do projeto.
+# 4) Usar imagem runtime para rodar.
+
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+WORKDIR /src
+
+# copia csproj e restaura dependencias
+COPY "5- backend/Apis Rest/TodoApi/TodoApi.csproj" "TodoApi/"
+RUN dotnet restore "TodoApi/TodoApi.csproj"
+
+# copia o resto do codigo
+COPY "5- backend/Apis Rest/TodoApi" "TodoApi/"
+WORKDIR /src/TodoApi
+RUN dotnet publish -c Release -o /app/out
+
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
+WORKDIR /app
+COPY --from=build /app/out ./
+
+EXPOSE 80
+ENTRYPOINT ["dotnet", "TodoApi.dll"]
