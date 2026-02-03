@@ -1,0 +1,74 @@
+﻿/* ======================================================
+   CLONAGEM DE LANDING PAGE - CSS
+   Objetivo: layout completo com hero + secoes.
+   ====================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Playfair+Display:wght@500;700&display=swap');
+
+:root {
+  --bg: #f8f4ef;
+  --ink: #1c1c1c;
+  --accent: #1f6f78;
+  --card: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.hero {
+  padding: 80px 24px;
+  text-align: center;
+  background: linear-gradient(135deg, #f6f2ea, #e2f1f2);
+}
+
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 44px;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  max-width: 680px;
+  margin: 0 auto 24px auto;
+  color: #4b4b4b;
+}
+
+.btn-cta {
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 40px 24px;
+}
+
+.feature {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* HTML sugerido:
+<section class="hero">
+  <h1>Produto X</h1>
+  <p>Mensagem principal da landing page.</p>
+  <button class="btn-cta">Comecar</button>
+</section>
+<section class="features">
+  <div class="feature">Bloco 1</div>
+  <div class="feature">Bloco 2</div>
+  <div class="feature">Bloco 3</div>
+</section>
+*/

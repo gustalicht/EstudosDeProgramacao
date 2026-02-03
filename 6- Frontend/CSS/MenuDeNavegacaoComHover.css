@@ -1,0 +1,62 @@
+﻿/* ======================================================
+   MENU COM HOVER - CSS
+   Objetivo: praticar nav, hover e transicoes.
+   ====================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap');
+
+:root {
+  --bg: #f7f6f2;
+  --ink: #1a1a1a;
+  --accent: #2a6f6f;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.nav {
+  display: flex;
+  gap: 18px;
+  padding: 20px 28px;
+  background: #ffffff;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--ink);
+  position: relative;
+  padding: 6px 2px;
+  transition: color 0.2s ease;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.2s ease;
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* HTML sugerido:
+<nav class="nav">
+  <a href="#">Inicio</a>
+  <a href="#">Projetos</a>
+  <a href="#">Contato</a>
+</nav>
+*/

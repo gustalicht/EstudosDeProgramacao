@@ -1,0 +1,46 @@
+﻿<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tabela de Precos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body { margin:0; font-family:"Space Grotesk", sans-serif; background:#f8f4ef; color:#1c1c1c; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:16px; padding:40px; }
+    .card { background:#fff; border-radius:12px; padding:20px; box-shadow:0 12px 26px rgba(0,0,0,0.08); }
+    .price { font-size:24px; color:#b55a30; font-weight:700; }
+    button { margin-top:12px; background:#1f6f78; color:#fff; border:none; padding:10px 12px; border-radius:8px; }
+  </style>
+</head>
+<body>
+  <!-- PASSO A PASSO
+       1) Grid de cards
+       2) Preco e beneficios
+       3) Botao de acao
+  -->
+  <div class="grid">
+    <div class="card">
+      <h2>Basico</h2>
+      <div class="price">R$ 29</div>
+      <p>1 usuario</p>
+      <p>Suporte simples</p>
+      <button>Assinar</button>
+    </div>
+    <div class="card">
+      <h2>Pro</h2>
+      <div class="price">R$ 59</div>
+      <p>5 usuarios</p>
+      <p>Suporte prioritario</p>
+      <button>Assinar</button>
+    </div>
+    <div class="card">
+      <h2>Empresa</h2>
+      <div class="price">R$ 99</div>
+      <p>Usuarios ilimitados</p>
+      <p>Suporte 24/7</p>
+      <button>Assinar</button>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+﻿/* ======================================================
+   CARD DE PRODUTO RESPONSIVO - CSS
+   Objetivo: flex, card, responsividade.
+   ====================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+
+:root {
+  --bg: #f4f1ec;
+  --card: #ffffff;
+  --ink: #1c1c1c;
+  --accent: #b55a30;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.card {
+  max-width: 520px;
+  margin: 40px auto;
+  background: var(--card);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.price {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn.ghost {
+  background: #f0e3db;
+}
+
+@media (max-width: 600px) {
+  .card {
+    margin: 20px;
+  }
+  .actions {
+    flex-direction: column;
+  }
+}
+
+/* HTML sugerido:
+<div class="card">
+  <img src="produto.jpg" alt="Produto" />
+  <div class="card-body">
+    <h2>Produto X</h2>
+    <p>Descricao curta...</p>
+    <div class="price">R$ 120,00</div>
+    <div class="actions">
+      <button class="btn primary">Comprar</button>
+      <button class="btn ghost">Detalhes</button>
+    </div>
+  </div>
+</div>
+*/
