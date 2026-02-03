@@ -1,21 +1,27 @@
-﻿# ApiWebRest (Razor Pages) - Guia Detalhado
+﻿# ApiWebRest (Razor Pages) - Guia Profundo
 
-## O que e?
-Projeto web com Razor Pages (paginas geradas no servidor).
+## O que e Razor Pages?
+E um modelo de pagina em que cada pagina tem:
+- `.cshtml` (HTML + Razor)
+- `.cshtml.cs` (code-behind)
 
-## Como funciona
-- Cada pagina tem um arquivo .cshtml (HTML + C#).
-- O code-behind (.cshtml.cs) tem a logica.
+## Fluxo (passo a passo)
+1. Usuario acessa /Index.
+2. Razor carrega o arquivo Index.cshtml.
+3. Code-behind executa OnGet/OnPost.
+4. HTML final e enviado ao navegador.
+
+## Quando usar?
+- Sites simples.
+- Formularios pequenos.
+- Painel admin basico.
 
 ## Estrutura
-- Pages/Index.cshtml: pagina inicial
-- Pages/Privacy.cshtml: pagina de politica
-- Program.cs: pipeline do app
-
-## Quando usar Razor Pages?
-- Apps simples.
-- Sites com poucas paginas e logica leve.
+- `Pages/Index.cshtml` = view
+- `Pages/Index.cshtml.cs` = logica
+- `Program.cs` = pipeline
 
 ## Exercicios
-1. Criar nova pagina About.
-2. Adicionar formulario simples.
+1. Criar pagina About.
+2. Criar formulario e tratar OnPost.
+3. Criar layout personalizado.

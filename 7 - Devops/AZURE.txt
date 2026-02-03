@@ -1,1 +1,24 @@
-Coisas sobre AZURE. 
+﻿AZURE - Guia Basico
+
+1) O que e Azure?
+Plataforma de cloud da Microsoft.
+
+2) Servicos fundamentais
+- Virtual Machines
+- Blob Storage
+- Azure SQL
+- Active Directory
+
+3) Conceitos basicos
+- Resource Groups
+- Regioes
+- Billing
+
+4) Exemplo simples
+- Criar Storage Account
+- Subir arquivo
+- Criar VM
+
+Desafios
+1) Subir site estatico.
+2) Criar um banco e conectar.

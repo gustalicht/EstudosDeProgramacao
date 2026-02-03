@@ -9,20 +9,21 @@ namespace TodoApi
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            // 1) Controllers: habilita rotas baseadas em controllers.
             builder.Services.AddControllers();
-            builder.Services.AddDbContext<TodoContext>(opt =>
-            opt.UseInMemoryDatabase("TodoList"));
 
-            // Configure OpenAPI/Swagger
+            // 2) DbContext: banco em memoria (bom para estudo).
+            builder.Services.AddDbContext<TodoContext>(opt =>
+                opt.UseInMemoryDatabase("TodoList"));
+
+            // 3) Swagger: documentacao automatica da API.
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            // Enable Swagger middleware. In development it will show the UI, but
-            // it's often useful to enable it in other environments during testing.
+            // Swagger UI: ajuda a testar endpoints.
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
@@ -30,11 +31,13 @@ namespace TodoApi
                 c.RoutePrefix = string.Empty; // serve the UI at application's root
             });
 
+            // Redireciona HTTP -> HTTPS.
             app.UseHttpsRedirection();
 
+            // Autorizacao (nao ha auth configurada ainda, mas o middleware e mantido).
             app.UseAuthorization();
 
-
+            // Mapeia controllers (rotas).
             app.MapControllers();
 
             app.Run();

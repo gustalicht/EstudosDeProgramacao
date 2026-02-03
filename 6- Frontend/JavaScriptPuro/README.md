@@ -1,12 +1,19 @@
-﻿# JavaScript Puro - Guia Detalhado
+﻿# JavaScript Puro - Guia Profundo (Sem Resumo)
 
 ## O que e JS no navegador?
-JavaScript permite interagir com o DOM, responder a eventos e mudar a pagina sem recarregar.
+JS permite alterar a pagina em tempo real.
 
-## Conceitos basicos
-- Variaveis e funcoes
-- Eventos (click, submit)
-- DOM (document.querySelector)
+## DOM
+- `document.querySelector`
+- `addEventListener`
+
+## Eventos
+- click
+- submit
+- keydown
+
+## Estado
+Guardar estado em variaveis e atualizar a UI.
 
 ## Exercicios
 1. Contador com botoes.

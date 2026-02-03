@@ -1,17 +1,20 @@
-﻿# Taiwind - Guia Detalhado (introducao)
+﻿# Tailwind - Guia Profundo (Sem Resumo)
 
 ## O que e Tailwind?
-E um framework CSS baseado em classes utilitarias.
+Framework baseado em classes utilitarias.
 
 ## Como pensar
-- Voce monta o layout direto nas classes HTML.
-- Menos CSS manual.
+- Cada classe aplica um estilo pequeno.
+- Voce compoe varias classes no HTML.
 
 ## Exemplo
 ```html
-<div class="p-4 bg-gray-100 rounded">Ola</div>
+<div class="p-4 bg-gray-100 rounded">Card</div>
 ```
 
+## Erros comuns
+- Repetir muitas classes sem organizar.
+
 ## Exercicios
-1. Criar um card com Tailwind.
+1. Criar card com Tailwind.
 2. Criar layout de duas colunas.

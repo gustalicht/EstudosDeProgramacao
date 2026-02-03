@@ -1,39 +1,69 @@
-﻿# APIs GraphQL - Guia Detalhado
+﻿# APIs GraphQL - Guia Profundo (Sem Resumo)
 
 ## O que e GraphQL?
-GraphQL e uma linguagem de consulta para APIs. O cliente pede exatamente os dados que precisa.
+GraphQL e uma linguagem de consulta para APIs. O cliente descreve exatamente os dados que quer.
 
-## Diferenca principal para REST
-- REST: o servidor define respostas fixas por endpoint.
-- GraphQL: o cliente monta a resposta desejada na consulta.
+------------------------------------------------------------
 
-## Conceitos principais
-- **Schema**: define os tipos e as operacoes disponiveis.
-- **Query**: leitura de dados.
-- **Mutation**: alteracao de dados.
-- **Resolver**: funcao que busca o dado.
+## Como funciona (passo a passo)
+1. Cliente envia uma query.
+2. Servidor valida no schema.
+3. Resolver busca os dados.
+4. Servidor responde somente com o que foi pedido.
 
-## Modelo mental (passo a passo)
-1. O cliente envia uma query.
-2. O servidor valida no schema.
-3. O resolver busca os dados.
-4. O servidor responde apenas com o que foi pedido.
+------------------------------------------------------------
+
+## Componentes essenciais
+- **Schema**: define tipos e operacoes.
+- **Query**: leitura.
+- **Mutation**: escrita.
+- **Resolver**: logica que busca dados.
+
+------------------------------------------------------------
+
+## Exemplo de schema simples
+```graphql
+type User {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+type Query {
+  user(id: ID!): User
+}
+```
 
 ## Exemplo de query
-```
+```graphql
 {
   user(id: "1") {
     id
     name
-    email
   }
 }
 ```
 
+------------------------------------------------------------
+
+## Vantagens
+- Evita dados a mais.
+- Frontend controla o formato.
+- Reduz numero de endpoints.
+
+## Desvantagens
+- Pode gerar queries complexas.
+- Precisa de controle de custo.
+
+------------------------------------------------------------
+
 ## Quando usar?
-- Quando o frontend precisa de dados flexiveis.
-- Quando existe muito overfetch (dados a mais).
+- Frontend com telas variadas.
+- Muitos consumidores com necessidades diferentes.
+
+------------------------------------------------------------
 
 ## Exercicios
-1. Criar um schema simples (User, Post).
-2. Implementar uma query e uma mutation.
+1. Criar schema User e Post.
+2. Criar mutation CreateUser.
+3. Implementar resolver com lista.

@@ -1,25 +1,30 @@
-﻿# Frontend - Guia Detalhado
+﻿# Frontend - Guia Profundo (Sem Resumo)
 
 ## O que e frontend?
-E a parte que o usuario ve e interage. Normalmente feito com HTML, CSS e JavaScript.
+Frontend e tudo que o usuario ve e interage: telas, botoes, formularios, animacoes.
 
-## O que cada parte faz
-- **HTML**: estrutura (o esqueleto).
-- **CSS**: estilo (cores, fontes, layout).
-- **JavaScript**: comportamento (interacao).
+## Tecnologias base
+- **HTML**: estrutura
+- **CSS**: estilo
+- **JavaScript**: comportamento
 
-## Como estudar (passo a passo)
-1. Aprenda HTML basico (tags e semantica).
-2. Aprenda CSS (layout e responsividade).
-3. Aprenda JS basico (DOM, eventos).
-4. Crie mini projetos.
+## Como pensar um frontend (passo a passo)
+1. Definir estrutura (HTML).
+2. Aplicar layout e estilos (CSS).
+3. Adicionar interacao (JS).
+4. Otimizar para mobile.
+5. Validar acessibilidade.
 
-## Pastas desta secao
-- HTML
-- CSS
-- JavaScriptPuro
-- NodeJs
-- Taiwind (introducao a utilitarios)
+## Erros comuns de iniciantes
+- Misturar estrutura com estilo.
+- Usar div para tudo.
+- Não pensar em responsividade.
+- Ignorar acessibilidade.
 
-## Dica
-Sempre comece com um layout simples e depois refine.
+## O que um senior domina
+- Semantica correta.
+- Design responsivo.
+- Performance (lazy loading, compressao).
+- Acessibilidade (ARIA, contraste).
+
+Veja as subpastas para exemplos completos.

@@ -1,33 +1,40 @@
-﻿# HTML - Guia Detalhado
+﻿# HTML - Guia Profundo (Sem Resumo)
 
 ## O que e HTML?
-HTML e a linguagem de marcacao usada para criar a estrutura de paginas web.
+HTML define a estrutura do conteudo da pagina.
 
-## Estrutura minima
+## Estrutura basica
 ```html
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Minha pagina</title>
   </head>
   <body>
-    <h1>Ola</h1>
+    <h1>Titulo</h1>
   </body>
 </html>
 ```
 
-## Tags essenciais
-- `h1..h6`: titulos
-- `p`: paragrafos
-- `a`: links
-- `img`: imagens
-- `form`, `input`, `button`: formularios
+## Semantica (por que importa)
+Tags descrevem o significado do conteudo.
+- `header`, `main`, `section`, `article`, `footer`
+- Ajuda SEO e acessibilidade.
 
-## Semantica
-Use tags que descrevem o conteudo: `header`, `main`, `section`, `article`, `footer`.
+## Formularios
+- `input`, `label`, `textarea`, `button`
+- `type="email"`, `type="password"`
+
+## Tabelas
+- `table`, `thead`, `tbody`, `tr`, `td`
+
+## Erros comuns
+- Usar div para tudo.
+- Esquecer label em input.
+- Não usar title e meta.
 
 ## Exercicios
-1. Criar uma pagina de artigo.
-2. Criar um formulario.
-3. Criar uma tabela de precos.
+1. Curriculo.
+2. Formulario de contato.
+3. Pagina de artigo.
+4. Tabela de precos.

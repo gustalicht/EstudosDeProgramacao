@@ -1,14 +1,19 @@
-﻿# NodeJs - Guia Detalhado
+﻿# Node.js - Guia Profundo (Sem Resumo)
 
-## O que e Node.js?
-Node permite rodar JavaScript no servidor.
+## O que e Node?
+Node permite rodar JS no servidor.
 
-## Conceitos principais
-- Modulos (require/import)
-- FS (ler/escrever arquivos)
-- HTTP (servidor simples)
+## Conceitos essenciais
+- Event loop
+- IO assincrono
+- Modulos
+
+## Passo a passo para rodar
+```bash
+node arquivo.js
+```
 
 ## Exercicios
 1. Leitor de arquivo.
 2. CRUD em JSON.
-3. API simples.
+3. API simples com http.

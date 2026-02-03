@@ -9,8 +9,24 @@ POST {{TodoApi_HostAddress}}/api/todoitems
 Content-Type: application/json
 
 {
-  //TodoItem
+  "name": "Estudar API",
+  "isComplete": false
 }
 
 ###
  
+
+###
+# Atualizar um item
+PUT {{TodoApi_HostAddress}}/api/todoitems/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Estudar API - atualizado",
+  "isComplete": true
+}
+
+###
+# Deletar um item
+DELETE {{TodoApi_HostAddress}}/api/todoitems/1

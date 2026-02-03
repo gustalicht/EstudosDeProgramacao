@@ -1,1 +1,24 @@
-Coisas sobre AWS 
+﻿AWS - Guia Basico
+
+1) O que e AWS?
+Plataforma de cloud com servicos sob demanda.
+
+2) Servicos fundamentais
+- EC2: maquinas virtuais
+- S3: armazenamento de arquivos
+- RDS: banco relacional gerenciado
+- IAM: usuarios e permissoes
+
+3) Conceitos basicos
+- Regiao e zona
+- Billing (custos)
+- IAM roles
+
+4) Exemplo simples (passo a passo)
+- Criar bucket S3
+- Fazer upload de arquivo
+- Tornar publico (se necessario)
+
+Desafios
+1) Subir um site estatico no S3.
+2) Criar uma instancia EC2 e acessar por SSH.

@@ -1,1 +1,18 @@
-Coisas sobre CI/CD 
+﻿CI/CD - Guia Basico
+
+1) O que e CI?
+Integracao continua: build e testes automáticos.
+
+2) O que e CD?
+Entrega continua: deploy automatico.
+
+3) Exemplo de pipeline simples
+- checkout
+- restore
+- build
+- test
+- publish
+
+Desafios
+1) Criar pipeline no GitHub Actions.
+2) Adicionar etapa de testes.
